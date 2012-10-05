@@ -25,28 +25,27 @@ class Board {
     context.clearRect(0, 0, width, height);
   }
 
-  void _border() {
-    context.rect(0, 0, width, height);
+  void _colorBox(Cell cell) {
+    var gap = height / memory.length;
+    var x = cell.row * gap;
+    var y = cell.column * gap;
+    context.beginPath();
+    context.fillStyle = colorMap[cell.color];
+    context.rect(x, y, gap, gap);
+    context.fill();
     context.stroke();
+    context.closePath();
   }
 
-  void _lines() {
-    var gap = height / memory.length;
-    var x, y;
-    for (var i = 1; i < memory.length; i++) {
-      x = gap * i;
-      y = x;
-      context.moveTo(x, 0);
-      context.lineTo(x, height);
-      context.moveTo(0, y);
-      context.lineTo(width, y);
+  void _boxes() {
+    for (Cell cell in memory.cells) {
+      _colorBox(cell);
     }
   }
 
   void draw() {
     _clear();
-    _border();
-    _lines();
+    _boxes();
   }
 
 }
