@@ -1,19 +1,12 @@
 
-import 'dart:html';
+#import('dart:html');
 
-num rotatePos = 0;
+#source('board.dart');
 
 void main() {
-  query("#text").text = "Click me!";
-
-  query("#text").on.click.add(rotateText);
+  // Get a reference to the canvas.
+  CanvasElement canvas = document.query('#canvas');
+  new Board(canvas);
 }
 
-void rotateText(Event event) {
-  rotatePos += 360;
 
-  var textElement = query("#text");
-
-  textElement.style.transition = "1s";
-  textElement.style.transform = "rotate(${rotatePos}deg)";
-}
