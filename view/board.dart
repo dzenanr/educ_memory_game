@@ -10,7 +10,9 @@ class Board {
   num width;
   num height;
 
-  Board(this.canvas) {
+  Memory memory;
+
+  Board(this.canvas, this.memory) {
     context = canvas.getContext('2d');
     width = canvas.width;
     height = canvas.height;
@@ -19,18 +21,32 @@ class Board {
     document.window.setInterval(draw, interval);
   }
 
-  void clear() {
+  void _clear() {
     context.clearRect(0, 0, width, height);
   }
 
-  void border() {
+  void _border() {
     context.rect(0, 0, width, height);
     context.stroke();
   }
 
+  void _lines() {
+    var gap = height / memory.length;
+    var x, y;
+    for (var i = 1; i < memory.length; i++) {
+      x = gap * i;
+      y = x;
+      context.moveTo(x, 0);
+      context.lineTo(x, height);
+      context.moveTo(0, y);
+      context.lineTo(width, y);
+    }
+  }
+
   void draw() {
-    clear();
-    border();
+    _clear();
+    _border();
+    _lines();
   }
 
 }
