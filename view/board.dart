@@ -3,35 +3,43 @@ class Board {
 
   // The board is drawn every interval in ms.
   static const int interval = 8;
+  //
+  static const String colorCode = '#f0f0f0';
 
   CanvasElement canvas;
   CanvasRenderingContext2D context;
 
-  num width;
-  num height;
+  num size;
+  num boxSize;
 
   Memory memory;
 
   Board(this.canvas, this.memory) {
     context = canvas.getContext('2d');
-    width = canvas.width;
-    height = canvas.height;
+    size = canvas.width;
+    boxSize = size / memory.length;
+
+    // Canvas event.
+    document.query('#canvas').on.mouseDown.add(onMouseDown);
 
     // Draw every interval in ms.
     document.window.setInterval(draw, interval);
   }
 
   void _clear() {
-    context.clearRect(0, 0, width, height);
+    context.clearRect(0, 0, size, size);
   }
 
   void _colorBox(Cell cell) {
-    var gap = height / memory.length;
-    var x = cell.row * gap;
-    var y = cell.column * gap;
+    var x = cell.column * boxSize;
+    var y = cell.row * boxSize;
     context.beginPath();
-    context.fillStyle = colorMap[cell.color];
-    context.rect(x, y, gap, gap);
+    if (cell.hidden) {
+      context.fillStyle = colorCode;
+    } else {
+      context.fillStyle = colorMap[cell.color];
+    }
+    context.rect(x, y, boxSize, boxSize);
     context.fill();
     context.stroke();
     context.closePath();
@@ -46,6 +54,14 @@ class Board {
   void draw() {
     _clear();
     _boxes();
+  }
+
+  void onMouseDown(MouseEvent e) {
+    int row = (e.offsetY ~/ boxSize).toInt();
+    int column = (e.offsetX ~/ boxSize).toInt();
+    Cell cell = memory.getCell(row, column);
+    cell.hidden = false;
+    cell.twin.hidden = false;
   }
 
 }
