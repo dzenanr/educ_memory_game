@@ -1,4 +1,6 @@
 
+// http://www.w3schools.com/html/html_colornames.asp
+
 var colorList = [
                  'azure',
                  'beige',

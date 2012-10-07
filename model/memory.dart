@@ -2,7 +2,7 @@
 class Memory {
 
   int length;
-  bool recalled = false;
+  bool _recalled = false;
 
   Cells cells;
   List usedColors = [];
@@ -58,6 +58,22 @@ class Memory {
     } while (usedColors.some((c) => c == color));
     usedColors.add(color);
     return color;
+  }
+
+  bool get recalled {
+    if (!_recalled) {
+      if (cells.every((c) => c.shown)) {
+        _recalled = true;
+      }
+    }
+    return _recalled;
+  }
+
+  hide() {
+    for (final cell in cells) {
+      cell.hidden = true;
+    }
+    _recalled = false;
   }
 
 }

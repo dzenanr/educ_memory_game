@@ -14,6 +14,8 @@ class Board {
 
   Memory memory;
 
+  Cell lastCellClicked;
+
   Board(this.canvas, this.memory) {
     context = canvas.getContext('2d');
     size = canvas.width;
@@ -61,7 +63,15 @@ class Board {
     int column = (e.offsetX ~/ boxSize).toInt();
     Cell cell = memory.getCell(row, column);
     cell.hidden = false;
-    cell.twin.hidden = false;
+    if (cell.twin == lastCellClicked && lastCellClicked.shown) {
+      lastCellClicked.hidden = false;
+      if (memory.recalled) {
+        memory.hide();
+      }
+    } else {
+      new Timer(1000, (Timer t) => cell.hidden = true);
+    }
+    lastCellClicked = cell;
   }
 
 }
