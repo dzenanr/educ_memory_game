@@ -1,9 +1,9 @@
 
 class Board {
 
-  // The board is drawn every interval in ms.
-  static const int interval = 8;
-  //
+  // board is drawn every interval in ms
+  static const int interval = 10;
+  // color of hidden cells
   static const String colorCode = '#f0f0f0';
 
   CanvasElement canvas;
@@ -21,11 +21,9 @@ class Board {
     size = canvas.width;
     boxSize = size / memory.length;
 
-    // Canvas event.
     document.query('#canvas').on.mouseDown.add(onMouseDown);
 
-    // Draw every interval in ms.
-    document.window.setInterval(draw, interval);
+    new Timer.repeating(interval, (t) => draw());
   }
 
   void _clear() {

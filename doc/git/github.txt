@@ -38,7 +38,7 @@ Next steps:
   git init
   git status
   git add .
-  git commit -m 'initial model version'
+  git commit -m 'initial version'
   git remote add origin https://github.com/dzenanr/educ_memory_game.git
   git push -u origin master     
 
