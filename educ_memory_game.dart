@@ -1,13 +1,13 @@
 
-#import('dart:html');
-#import('dart:isolate');
-#import('dart:math');
+import 'dart:html';
+import 'dart:isolate';
+import 'dart:math';
 
-#source('model/cell.dart');
-#source('model/memory.dart');
-#source('view/board.dart');
-#source('util/color.dart');
-#source('util/random.dart');
+part 'model/cell.dart';
+part 'model/memory.dart';
+part 'view/board.dart';
+part 'util/color.dart';
+part 'util/random.dart';
 
 void main() {
   // Get a reference to the canvas.
