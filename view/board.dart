@@ -4,7 +4,7 @@ class Board {
   // board is drawn every interval in ms
   static const int interval = 10;
   // color of hidden cells
-  static const String colorCode = '#f0f0f0';
+  static const String hiddenCellColorCode = '#f0f0f0';
 
   CanvasElement canvas;
   CanvasRenderingContext2D context;
@@ -35,7 +35,11 @@ class Board {
     var y = cell.row * boxSize;
     context.beginPath();
     if (cell.hidden) {
-      context.fillStyle = colorCode;
+      context.fillStyle = hiddenCellColorCode;
+      var centerX = cell.column * boxSize + boxSize/ 2;
+      var centerY = cell.row * boxSize + boxSize/ 2;
+      var radius = 4;
+      context.arc(centerX, centerY, radius, 0, 2 * PI, false);
     } else {
       context.fillStyle = colorMap[cell.color];
     }
@@ -61,13 +65,13 @@ class Board {
     int column = (e.offsetX ~/ boxSize).toInt();
     Cell cell = memory.getCell(row, column);
     cell.hidden = false;
-    if (cell.twin == lastCellClicked && lastCellClicked.shown) {
+    if (cell.twin == lastCellClicked) {
       lastCellClicked.hidden = false;
       if (memory.recalled) {
-        memory.hide();
+        new Timer(2000, (Timer t) => memory.hide());
       }
-    } else {
-      new Timer(1000, (Timer t) => cell.hidden = true);
+    } else if (cell.twin.hidden) {
+      new Timer(800, (Timer t) => cell.hidden = true);
     }
     lastCellClicked = cell;
   }
