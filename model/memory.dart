@@ -8,7 +8,7 @@ class Memory {
   List usedColors = [];
 
   Memory(this.length) {
-    if (length.isOdd()) {
+    if (length.isOdd) {
       throw new Exception(
           'Memory length must be an even integer: ${length}.');
     }
