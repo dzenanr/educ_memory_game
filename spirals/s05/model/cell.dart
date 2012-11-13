@@ -1,4 +1,3 @@
-part of educ_memory_game;
 
 class Cell {
 

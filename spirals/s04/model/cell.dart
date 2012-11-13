@@ -1,4 +1,3 @@
-part of educ_memory_game;
 
 class Cell {
 
@@ -19,8 +18,6 @@ class Cell {
     return false;
   }
 
-  bool get shown => !hidden;
-
 }
 
 class Cells {
@@ -37,10 +34,6 @@ class Cells {
 
   Iterator iterator() {
     return list.iterator();
-  }
-
-  bool every(Function f) {
-    return list.every(f);
   }
 
 }

@@ -1,0 +1,134 @@
+github.txt for educ_memory_game
+
+GitHub, Git
+
+https://github.com/
+http://www.codeschool.com/courses/try-git
+http://git-scm.com/videos
+http://marklodato.github.com/visual-git-guide/index-en.html
+
+Education
+
+https://github.com/edu
+
+Create an account at GitHub.
+
+Read:
+
+http://help.github.com/win-set-up-git/
+http://www.ralfebert.de/blog/tools/git_screencast/
+http://scottr.org/presentations/git-in-5-minutes/
+
+-------------------------------------------------------------------------------
+
+After creating an account, create a remote repository.
+
+http://help.github.com/create-a-repo/
+
+Create a New Repo at GitHub 
+(without README, since cloning will not be used).
+Repository Name: educ_memory_game
+Description: 
+  educ_memory_game spirals by the Dart Game Group to learn Dart.
+      
+Next steps:
+  cd git/dart/game/educ_memory_game
+  git init
+  git status
+  git add .
+  git commit -m 'initial model version'
+  git remote add origin https://github.com/dzenanr/educ_memory_game.git
+  git push -u origin master     
+
+-------------------------------------------------------------------------------
+
+Git with Git Bash
+
+Clone a remote repository into a local repository.
+
+cd git/dart/game
+git clone https://github.com/dzenanr/educ_memory_game.git
+cd educ_memory_game
+
+Read+Write:
+https://github.com/dzenanr/educ_memory_game.git
+
+Read only:
+git://github.com/dzenanr/educ_memory_game.git
+
+Get the latest changes from the remote repository
+
+git pull
+or
+git pull origin master
+
+-------------------------------------------------------------------------------
+
+Work with a local repository
+
+cd git/dart/game/educ_memory_game
+
+git status
+
+git add .
+
+git status
+
+git commit -m 'short description'
+
+git status
+
+git rm file
+
+git status
+
+git push
+or
+git push origin master
+
+git status
+
+-------------------------------------------------------------------------------
+
+Tagging for versions (spirals)
+
+http://learn.github.com/p/tagging.html
+
+git tag
+git tag -a s00 -m 'spiral_00: short description'
+git tag
+
+To push tags to the remote repository:
+
+git push --tags
+... 
+
+To remove a tag from the remote repository:
+
+http://nathanhoad.net/how-to-delete-a-remote-git-tag
+
+git tag -d s00
+git push origin :refs/tags/s00
+
+-------------------------------------------------------------------------------
+
+Switching from master to spiral
+
+from master to tag
+git checkout s01
+from tag to branch
+git checkout -b s01a
+to use branch
+git checkout s01a
+
+Switching from spiral to master
+
+to exclude js:
+git checkout educ_memory_game.dart.js
+or 
+(see http://scottr.org/presentations/git-in-5-minutes/)
+git stash
+
+git checkout master
+
+-------------------------------------------------------------------------------

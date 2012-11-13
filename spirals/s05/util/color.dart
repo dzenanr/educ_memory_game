@@ -1,4 +1,3 @@
-part of educ_memory_game;
 
 // http://www.w3schools.com/html/html_colornames.asp
 

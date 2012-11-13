@@ -1,4 +1,3 @@
-library educ_memory_game;
 
 import 'dart:html';
 import 'dart:isolate';

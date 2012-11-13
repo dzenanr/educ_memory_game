@@ -1,11 +1,10 @@
-part of educ_memory_game;
 
 class Board {
 
-  // board is drawn every interval in ms
-  static const int interval = 10;
-  // color of hidden cells
-  static const String hiddenCellColorCode = '#f0f0f0';
+  // The board is drawn every interval in ms.
+  static const int interval = 8;
+  //
+  static const String colorCode = '#f0f0f0';
 
   CanvasElement canvas;
   CanvasRenderingContext2D context;
@@ -15,15 +14,15 @@ class Board {
 
   Memory memory;
 
-  Cell lastCellClicked;
-
   Board(this.canvas, this.memory) {
     context = canvas.getContext('2d');
     size = canvas.width;
     boxSize = size / memory.length;
 
+    // Canvas event.
     document.query('#canvas').on.mouseDown.add(onMouseDown);
 
+    // Draw every interval in ms.
     new Timer.repeating(interval, (t) => draw());
   }
 
@@ -36,11 +35,7 @@ class Board {
     var y = cell.row * boxSize;
     context.beginPath();
     if (cell.hidden) {
-      context.fillStyle = hiddenCellColorCode;
-      var centerX = cell.column * boxSize + boxSize/ 2;
-      var centerY = cell.row * boxSize + boxSize/ 2;
-      var radius = 4;
-      context.arc(centerX, centerY, radius, 0, 2 * PI, false);
+      context.fillStyle = colorCode;
     } else {
       context.fillStyle = colorMap[cell.color];
     }
@@ -66,15 +61,7 @@ class Board {
     int column = (e.offsetX ~/ boxSize).toInt();
     Cell cell = memory.getCell(row, column);
     cell.hidden = false;
-    if (cell.twin == lastCellClicked) {
-      lastCellClicked.hidden = false;
-      if (memory.recalled) {
-        new Timer(2000, (Timer t) => memory.hide());
-      }
-    } else if (cell.twin.hidden) {
-      new Timer(800, (Timer t) => cell.hidden = true);
-    }
-    lastCellClicked = cell;
+    cell.twin.hidden = false;
   }
 
 }

@@ -1,0 +1,6 @@
+To Do
+
++ list of lists (2 dimensions) for cells
++ use generics in lists (<Cell>)
++ add a button for a new memory
++ replace colors with images

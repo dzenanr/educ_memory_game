@@ -1,8 +1,7 @@
-library educ_memory_game;
 
-import 'dart:html';
+import 'dart:html' ;
 import 'dart:isolate';
-import 'dart:math';
+import 'dart:math' ;
 
 part 'model/cell.dart';
 part 'model/memory.dart';
