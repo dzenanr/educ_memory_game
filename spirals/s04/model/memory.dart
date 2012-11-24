@@ -1,3 +1,4 @@
+part of memory;
 
 class Memory {
 

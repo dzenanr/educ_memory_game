@@ -1,3 +1,4 @@
+part of memory;
 
 int randomInt(int max) => new Random().nextInt(max);
 

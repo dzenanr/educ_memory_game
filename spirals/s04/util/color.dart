@@ -1,3 +1,4 @@
+part of memory;
 
 var colorList = [
                  'azure',

@@ -1,3 +1,4 @@
+library memory;
 
 import 'dart:html' ;
 import 'dart:isolate';
