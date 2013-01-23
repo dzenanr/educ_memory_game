@@ -24,8 +24,8 @@ class Cells {
     list.add(cell);
   }
 
-  Iterator iterator() {
-    return list.iterator();
+  Iterator get iterator {
+    return list.iterator;
   }
 
 }

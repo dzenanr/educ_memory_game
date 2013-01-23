@@ -56,7 +56,7 @@ class Memory {
     var color;
     do {
       color = randomColor();
-    } while (usedColors.some((c) => c == color));
+    } while (usedColors.any((c) => c == color));
     usedColors.add(color);
     return color;
   }

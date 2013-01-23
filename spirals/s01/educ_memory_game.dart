@@ -1,7 +1,7 @@
 library memory;
 
 import 'dart:html';
-import 'dart:isolate';
+import 'dart:async';
 
 part 'board.dart';
 
