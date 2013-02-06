@@ -23,7 +23,7 @@ class Board {
     boxSize = size / memory.length;
 
     // Canvas event.
-    document.query('#canvas').on.mouseDown.add(onMouseDown);
+    document.query('#canvas').onMouseDown.listen(onMouseDown);
 
     // Draw every interval in ms.
     new Timer.repeating(interval, (t) => draw());

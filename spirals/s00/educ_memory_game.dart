@@ -6,7 +6,7 @@ num rotatePos = 0;
 void main() {
   query("#text").text = "Click me!";
 
-  query("#text").on.click.add(rotateText);
+  query("#text").onClick.listen(rotateText);
 }
 
 void rotateText(Event event) {

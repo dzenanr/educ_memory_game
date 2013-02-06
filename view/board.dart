@@ -22,7 +22,7 @@ class Board {
     size = canvas.width;
     boxSize = size / memory.length;
 
-    document.query('#canvas').on.mouseDown.add(onMouseDown);
+    document.query('#canvas').onMouseDown.listen(onMouseDown);
 
     new Timer.repeating(interval, (t) => draw());
   }
