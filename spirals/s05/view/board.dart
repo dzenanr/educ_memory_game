@@ -26,7 +26,7 @@ class Board {
     document.query('#canvas').onMouseDown.listen(onMouseDown);
 
     // Draw every interval in ms.
-    new Timer.repeating(interval, (t) => draw());
+    new Timer.repeating(const Duration(milliseconds: interval), (t) => draw());
   }
 
   void _clear() {
@@ -70,7 +70,7 @@ class Board {
         memory.hide();
       }
     } else {
-      new Timer(1000, (Timer t) => cell.hidden = true);
+      new Timer(const Duration(milliseconds: 1000), () => cell.hidden = true);
     }
     lastCellClicked = cell;
   }

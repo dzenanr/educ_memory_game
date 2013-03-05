@@ -24,7 +24,7 @@ class Board {
     document.query('#canvas').onMouseDown.listen(onMouseDown);
 
     // Draw every interval in ms.
-    new Timer.repeating(interval, (t) => draw());
+    new Timer.repeating(const Duration(milliseconds: interval), (t) => draw());
   }
 
   void _clear() {

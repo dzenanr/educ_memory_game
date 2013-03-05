@@ -24,7 +24,7 @@ class Board {
 
     document.query('#canvas').onMouseDown.listen(onMouseDown);
 
-    new Timer.repeating(interval, (t) => draw());
+    new Timer.repeating(const Duration(milliseconds: interval), (t) => draw());
   }
 
   void _clear() {
@@ -69,10 +69,10 @@ class Board {
     if (cell.twin == lastCellClicked) {
       lastCellClicked.hidden = false;
       if (memory.recalled) {
-        new Timer(2000, (Timer t) => memory.hide());
+        new Timer(const Duration(milliseconds: 2000), () => memory.hide());
       }
     } else if (cell.twin.hidden) {
-      new Timer(800, (Timer t) => cell.hidden = true);
+      new Timer(const Duration(milliseconds: 800), () => cell.hidden = true);
     }
     lastCellClicked = cell;
   }
