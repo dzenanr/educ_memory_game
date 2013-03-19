@@ -1,6 +1,3 @@
-
-
-
 # educ_memory_game
 
 Categories: education, game, class model, color, random, event, timer.

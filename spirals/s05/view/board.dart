@@ -26,7 +26,7 @@ class Board {
     document.query('#canvas').onMouseDown.listen(onMouseDown);
 
     // Draw every interval in ms.
-    new Timer.repeating(const Duration(milliseconds: interval), (t) => draw());
+    new Timer.periodic(const Duration(milliseconds: interval), (t) => draw());
   }
 
   void _clear() {
@@ -60,8 +60,8 @@ class Board {
   }
 
   void onMouseDown(MouseEvent e) {
-    int row = (e.offsetY ~/ boxSize).toInt();
-    int column = (e.offsetX ~/ boxSize).toInt();
+    int row = (e.offset.y ~/ boxSize).toInt();
+    int column = (e.offset.x ~/ boxSize).toInt();
     Cell cell = memory.getCell(row, column);
     cell.hidden = false;
     if (cell.twin == lastCellClicked && lastCellClicked.shown) {

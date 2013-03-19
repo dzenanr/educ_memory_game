@@ -17,7 +17,7 @@ class Board {
     height = canvas.height;
 
     // Draw every interval in ms.
-    new Timer.repeating(const Duration(milliseconds: interval), (t) => draw());
+    new Timer.periodic(const Duration(milliseconds: interval), (t) => draw());
   }
 
   void clear() {
