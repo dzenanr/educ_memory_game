@@ -2,10 +2,10 @@ part of memory;
 
 class Board {
 
-  // The board is drawn every interval in ms.
-  static const int interval = 8;
-  //
-  static const String colorCode = '#f0f0f0';
+  // The board is drawn every INTERVAL in ms.
+  static const int INTERVAL = 8;
+
+  static const String COLOR_CODE = '#f0f0f0';
 
   CanvasElement canvas;
   CanvasRenderingContext2D context;
@@ -25,8 +25,8 @@ class Board {
     // Canvas event.
     document.query('#canvas').onMouseDown.listen(onMouseDown);
 
-    // Draw every interval in ms.
-    new Timer.periodic(const Duration(milliseconds: interval), (t) => draw());
+    // Draw every INTERVAL in ms.
+    new Timer.periodic(const Duration(milliseconds: INTERVAL), (t) => draw());
   }
 
   void _clear() {
@@ -38,7 +38,7 @@ class Board {
     var y = cell.row * boxSize;
     context.beginPath();
     if (cell.hidden) {
-      context.fillStyle = colorCode;
+      context.fillStyle = COLOR_CODE;
     } else {
       context.fillStyle = colorMap[cell.color];
     }

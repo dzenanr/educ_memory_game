@@ -2,8 +2,8 @@ part of memory;
 
 class Board {
 
-  // The board is drawn every interval in ms.
-  static const int interval = 8;
+  // The board is drawn every INTERVAL in ms.
+  static const int INTERVAL = 8;
 
   CanvasElement canvas;
   CanvasRenderingContext2D context;
@@ -18,8 +18,8 @@ class Board {
     width = canvas.width;
     height = canvas.height;
 
-    // Draw every interval in ms.
-    new Timer.periodic(const Duration(milliseconds: interval), (t) => draw());
+    // Draw every INTERVAL in ms.
+    new Timer.periodic(const Duration(milliseconds: INTERVAL), (t) => draw());
   }
 
   void _clear() {

@@ -2,10 +2,10 @@ part of educ_memory_game;
 
 class Board {
 
-  // board is drawn every interval in ms
-  static const int interval = 10;
+  // board is drawn every INTERVAL in ms
+  static const int INTERVAL = 10;
   // color of hidden cells
-  static const String hiddenCellColorCode = '#f0f0f0';
+  static const String HIDDEN_CELL_COLOR_CODE = '#f0f0f0';
 
   CanvasElement canvas;
   CanvasRenderingContext2D context;
@@ -24,7 +24,7 @@ class Board {
 
     document.query('#canvas').onMouseDown.listen(onMouseDown);
 
-    new Timer.periodic(const Duration(milliseconds: interval), (t) => draw());
+    new Timer.periodic(const Duration(milliseconds: INTERVAL), (t) => draw());
   }
 
   void _clear() {
@@ -36,7 +36,7 @@ class Board {
     var y = cell.row * boxSize;
     context.beginPath();
     if (cell.hidden) {
-      context.fillStyle = hiddenCellColorCode;
+      context.fillStyle = HIDDEN_CELL_COLOR_CODE;
       var centerX = cell.column * boxSize + boxSize/ 2;
       var centerY = cell.row * boxSize + boxSize/ 2;
       var radius = 4;
