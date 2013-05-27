@@ -6,7 +6,7 @@ class Memory {
   bool _recalled = false;
 
   Cells cells;
-  List usedImages = [];
+  List usedColors = [];
 
   Memory(this.length) {
     if (length.isOdd) {
@@ -20,12 +20,12 @@ class Memory {
         cell = getCell(y, x);
         if (cell == null) {
           cell = new Cell(this, y, x);
-          cell.image = _getFreeRandomImage();
+          cell.color = _getFreeRandomColor();
           cells.add(cell);
           twinCell = _getFreeRandomCell();
           cell.twin = twinCell;
           twinCell.twin = cell;
-          twinCell.image = cell.image;
+          twinCell.color = cell.color;
           cells.add(twinCell);
         }
       }
@@ -52,13 +52,13 @@ class Memory {
     return new Cell(this, row, column);
   }
 
-  String _getFreeRandomImage() {
-    var image;
+  String _getFreeRandomColor() {
+    var color;
     do {
-      image = randomImage();
-    } while (usedImages.any((i) => i == image));
-    usedImages.add(image);
-    return image;
+      color = randomColor();
+    } while (usedColors.any((c) => c == color));
+    usedColors.add(color);
+    return color;
   }
 
   bool get recalled {
@@ -69,9 +69,7 @@ class Memory {
   }
 
   hide() {
-    for (final cell in cells) {
-      cell.hidden = true;
-    }
+    for (final cell in cells) cell.hidden = true;
     _recalled = false;
   }
 

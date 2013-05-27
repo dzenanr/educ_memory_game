@@ -4,7 +4,7 @@ class Cell {
 
   int row, column;
   Cell twin;
-  String image;
+  String color;
   bool hidden = true;
 
   Memory memory;
@@ -19,7 +19,6 @@ class Cell {
   }
 
   bool get shown => !hidden;
-
 }
 
 class Cells {
@@ -37,5 +36,4 @@ class Cells {
   Iterator get iterator => list.iterator;
 
   bool every(bool f(Cell cell)) => list.every(f);
-
 }

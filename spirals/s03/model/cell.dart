@@ -2,8 +2,7 @@ part of memory;
 
 class Cell {
 
-  int row;
-  int column;
+  int row, column;
   String color;
 
   Memory memory;
@@ -24,8 +23,6 @@ class Cells {
     list.add(cell);
   }
 
-  Iterator get iterator {
-    return list.iterator;
-  }
+  Iterator get iterator => list.iterator;
 
 }

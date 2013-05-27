@@ -1,15 +1,13 @@
 part of educ_memory_game;
 
 class Board {
-
   // board is drawn every INTERVAL in ms
-  static const int INTERVAL = 1000;
+  static const int INTERVAL = 10;
   // color of hidden cells
   static const String HIDDEN_CELL_COLOR_CODE = '#f0f0f0';
 
   CanvasElement canvas;
   CanvasRenderingContext2D context;
-
   num size, boxSize;
   Memory memory;
   Cell lastCellClicked;
@@ -21,7 +19,7 @@ class Board {
     query('#canvas').onMouseDown.listen(onMouseDown);
     new Timer.periodic(const Duration(milliseconds: INTERVAL), (t) => draw());
   }
-  
+
   void draw() {
     _clear();
     _boxes();
@@ -35,12 +33,12 @@ class Board {
   void _clear() {
     context.clearRect(0, 0, size, size);
   }
-  
+
   void _boxes() {
-    for (Cell cell in memory.cells) _imageBox(cell);
+    for (Cell cell in memory.cells) _colorBox(cell);
   }
-  
-  void _imageBox(Cell cell) {
+
+  void _colorBox(Cell cell) {
     var x = cell.column * boxSize;
     var y = cell.row * boxSize;
     context.beginPath();
@@ -51,12 +49,7 @@ class Board {
       var radius = 4;
       context.arc(centerX, centerY, radius, 0, 2 * PI, false);
     } else {
-      var imagePath = 'images/${cell.image}';
-      ImageElement img = new Element.tag('img');
-      img.src = imagePath;
-      img.onLoad.listen((event) {
-        context.drawImageToRect(img, new Rect(x, y, boxSize, boxSize));
-       });
+      context.fillStyle = colorMap[cell.color];
     }
     context.rect(x, y, boxSize, boxSize);
     context.fill();
@@ -71,12 +64,7 @@ class Board {
     cell.hidden = false;
     if (cell.twin == lastCellClicked) {
       lastCellClicked.hidden = false;
-      // play sound found same 2 images:
-      AudioElement aud = query('#snd1');
-      aud.play();
       if (memory.recalled) { // game over
-        AudioElement aud = query('#sndend');
-        aud.play();
         new Timer(const Duration(milliseconds: 5000), () => memory.hide());
       }
     } else if (cell.twin.hidden) {
@@ -84,5 +72,4 @@ class Board {
     }
     lastCellClicked = cell;
   }
-
 }

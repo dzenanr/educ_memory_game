@@ -1,5 +1,6 @@
 To Do
 
 + list of lists (2 dimensions) for cells
++ replace colors with images
 
 

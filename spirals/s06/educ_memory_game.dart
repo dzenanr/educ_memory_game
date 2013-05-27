@@ -7,18 +7,20 @@ import 'dart:math';
 part 'model/cell.dart';
 part 'model/memory.dart';
 part 'view/board.dart';
-part 'util/images.dart';
+part 'util/color.dart';
 part 'util/random.dart';
 
+CanvasElement canvas;
+
 void main() {
-  CanvasElement canvas = query('#canvas');
+  canvas = query('#canvas');
   ButtonElement play = query('#play');
-  play.onClick.listen((Event e) {
-    window.location.reload();
-  });
+  play.onClick.listen(playAgain);
   new Board(canvas, new Memory(4));
 }
 
-
+playAgain(Event e) {
+  window.location.reload();
+}
 
 

@@ -2,8 +2,7 @@ part of memory;
 
 class Cell {
 
-  int row;
-  int column;
+  int row, column;
   Cell twin;
   String color;
   bool hidden = true;
@@ -35,12 +34,8 @@ class Cells {
     list.add(cell);
   }
 
-  Iterator get iterator {
-    return list.iterator;
-  }
-
-  bool every(Function f) {
-    return list.every(f);
-  }
+  Iterator get iterator => list.iterator;
+  
+  bool every(Function f) => list.every(f);
 
 }

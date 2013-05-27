@@ -49,9 +49,7 @@ class Board {
   }
 
   void _boxes() {
-    for (Cell cell in memory.cells) {
-      _colorBox(cell);
-    }
+    for (Cell cell in memory.cells) _colorBox(cell);
   }
 
   void draw() {
@@ -66,9 +64,7 @@ class Board {
     cell.hidden = false;
     if (cell.twin == lastCellClicked && lastCellClicked.shown) {
       lastCellClicked.hidden = false;
-      if (memory.recalled) {
-        memory.hide();
-      }
+      if (memory.recalled) memory.hide();
     } else {
       new Timer(const Duration(milliseconds: 1000), () => cell.hidden = true);
     }

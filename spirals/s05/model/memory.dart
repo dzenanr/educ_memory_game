@@ -71,9 +71,7 @@ class Memory {
   }
 
   hide() {
-    for (final cell in cells) {
-      cell.hidden = true;
-    }
+    for (final cell in cells) cell.hidden = true;
     _recalled = false;
   }
 
