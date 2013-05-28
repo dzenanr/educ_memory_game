@@ -3,7 +3,7 @@ part of educ_memory_game;
 class Board {
 
   // board is drawn every INTERVAL in ms
-  static const int INTERVAL = 1000;
+  static const int INTERVAL = 1200;
   // color of hidden cells
   static const String HIDDEN_CELL_COLOR_CODE = '#f0f0f0';
 
@@ -13,6 +13,8 @@ class Board {
   num size, boxSize;
   Memory memory;
   Cell lastCellClicked;
+  
+  
 
   Board(this.canvas, this.memory) {
     context = canvas.getContext('2d');
@@ -55,6 +57,7 @@ class Board {
       ImageElement img = new Element.tag('img');
       img.src = imagePath;
       img.onLoad.listen((event) {
+        //context.clearRect(x, y, boxSize, boxSize);
         context.drawImageToRect(img, new Rect(x, y, boxSize, boxSize));
        });
     }
@@ -71,12 +74,12 @@ class Board {
     cell.hidden = false;
     if (cell.twin == lastCellClicked) {
       lastCellClicked.hidden = false;
-      // play sound found same 2 images:
-      AudioElement aud = query('#snd1');
-      aud.play();
+      // play sound when found the same 2 images:
+      AudioElement thip = query('#thip');
+      thip.play();
       if (memory.recalled) { // game over
-        AudioElement aud = query('#sndend');
-        aud.play();
+        AudioElement fireballs = query('#fireballs');
+        fireballs.play();
         new Timer(const Duration(milliseconds: 5000), () => memory.hide());
       }
     } else if (cell.twin.hidden) {

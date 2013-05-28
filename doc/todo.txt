@@ -1,5 +1,7 @@
 To Do
 
++ avoid flickering of twin images (http://stackoverflow.com/questions/5677709/html5-canvas-flicker-in-firefox-4)
 + list of lists (2 dimensions) for cells
+
 
 
