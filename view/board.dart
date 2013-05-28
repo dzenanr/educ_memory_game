@@ -14,7 +14,7 @@ class Board {
   Memory memory;
   Cell lastCellClicked;
   
- var imageMap = new Map<String, ImageElement>();
+  var imageMap = new Map<String, ImageElement>();
 
   Board(this.canvas, this.memory) {
     context = canvas.getContext('2d');
@@ -65,7 +65,7 @@ class Board {
       var imagePath = 'images/${cell.image}';
       ImageElement image = new Element.tag('img');
       image.src = imagePath;
-      //ImageElement imageElement = imageMap[cell.image];      
+      //ImageElement image = imageMap[cell.image]; // if decomment, comment the above 3 lines     
       image.onLoad.listen((event) {
         context.drawImageToRect(image, new Rect(x, y, boxSize, boxSize));
         //context.drawImage(image, x, y);
