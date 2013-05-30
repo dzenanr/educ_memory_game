@@ -3,7 +3,7 @@ part of educ_memory_game;
 class Board {
 
   // board is drawn every INTERVAL in ms
-  static const int INTERVAL = 1200;
+  static const int INTERVAL = 1000;
   // color of hidden cells
   static const String HIDDEN_CELL_COLOR_CODE = '#f0f0f0';
 
@@ -51,30 +51,35 @@ class Board {
     for (Cell cell in memory.cells) _imageBox(cell);
   }
 
+  // helped by Nico
+  // http://stackoverflow.com/questions/16838103/flickering-twin-images-in-memory-game
   void _imageBox(Cell cell) {
     var x = cell.column * boxSize;
     var y = cell.row * boxSize;
     context.beginPath();
-    if (cell.hidden) {
+    context.rect(x, y, boxSize, boxSize);
+    context.fill();
+    context.stroke();
+    context.closePath();
+    if (cell.hidden ) {
       context.fillStyle = HIDDEN_CELL_COLOR_CODE;
       var centerX = cell.column * boxSize + boxSize / 2;
       var centerY = cell.row * boxSize + boxSize / 2;
       var radius = 4;
       context.arc(centerX, centerY, radius, 0, 2 * PI, false);
     } else {
+      /*
       var imagePath = 'images/${cell.image}';
       ImageElement image = new Element.tag('img');
       image.src = imagePath;
-      //ImageElement image = imageMap[cell.image]; // if decomment, comment the above 3 lines
       image.onLoad.listen((event) {
         context.drawImageToRect(image, new Rect(x, y, boxSize, boxSize));
-        //context.drawImage(image, x, y);
       });
+      */
+      ImageElement image = imageMap[cell.image];
+      //context.drawImageToRect(image, new Rect(x, y, boxSize, boxSize));
+      context.drawImage(image, x, y); // images are resized to the cell size
     }
-    context.rect(x, y, boxSize, boxSize);
-    context.fill();
-    context.stroke();
-    context.closePath();
   }
 
   void onMouseDown(MouseEvent e) {
