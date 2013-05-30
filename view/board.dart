@@ -13,7 +13,7 @@ class Board {
   num size, boxSize;
   Memory memory;
   Cell lastCellClicked;
-  
+
   var imageMap = new Map<String, ImageElement>();
 
   Board(this.canvas, this.memory) {
@@ -24,7 +24,7 @@ class Board {
     query('#canvas').onMouseDown.listen(onMouseDown);
     new Timer.periodic(const Duration(milliseconds: INTERVAL), (t) => draw());
   }
-  
+
   _createImages(Memory memory) {
     for (var cell in memory.cells) {
       ImageElement image = new Element.tag('img');
@@ -32,7 +32,7 @@ class Board {
       imageMap[cell.image] = image;
     }
   }
-  
+
   void draw() {
     _clear();
     _boxes();
@@ -46,11 +46,11 @@ class Board {
   void _clear() {
     context.clearRect(0, 0, size, size);
   }
-  
+
   void _boxes() {
     for (Cell cell in memory.cells) _imageBox(cell);
   }
-  
+
   void _imageBox(Cell cell) {
     var x = cell.column * boxSize;
     var y = cell.row * boxSize;
@@ -65,7 +65,7 @@ class Board {
       var imagePath = 'images/${cell.image}';
       ImageElement image = new Element.tag('img');
       image.src = imagePath;
-      //ImageElement image = imageMap[cell.image]; // if decomment, comment the above 3 lines     
+      //ImageElement image = imageMap[cell.image]; // if decomment, comment the above 3 lines
       image.onLoad.listen((event) {
         context.drawImageToRect(image, new Rect(x, y, boxSize, boxSize));
         //context.drawImage(image, x, y);
