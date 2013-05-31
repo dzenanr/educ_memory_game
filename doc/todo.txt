@@ -1,7 +1,10 @@
 To Do
 
-+ list of lists (2 dimensions) for cells
 + sometimes, when you click on a cell nothing happens, and you have to click again.
++ sometimes, after you hear a sound, only one twin image stays displayed
+ (you have to click again to make the other twin image displayed)
+
++ list of lists (2 dimensions) for cells
 
 
 
