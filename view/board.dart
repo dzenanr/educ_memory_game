@@ -20,17 +20,13 @@ class Board {
     context = canvas.getContext('2d');
     size = canvas.width;
     boxSize = size / memory.length;
-    _createImages(memory);
-    query('#canvas').onMouseDown.listen(onMouseDown);
-    new Timer.periodic(const Duration(milliseconds: INTERVAL), (t) => draw());
-  }
-
-  _createImages(Memory memory) {
     for (var cell in memory.cells) {
       ImageElement image = new Element.tag('img');
       image.src = 'images/${cell.image}';
       imageMap[cell.image] = image;
     }
+    query('#canvas').onMouseDown.listen(onMouseDown);
+    new Timer.periodic(const Duration(milliseconds: INTERVAL), (t) => draw());
   }
 
   void draw() {
@@ -58,7 +54,8 @@ class Board {
     var y = cell.row * boxSize;
     context.beginPath();
     context.rect(x, y, boxSize, boxSize);
-    context.fill();
+    // when the screen first appears, the top left cell is black, then it goes away
+    // context.fill();
     context.stroke();
     context.closePath();
     if (cell.hidden ) {
@@ -77,7 +74,6 @@ class Board {
       });
       */
       ImageElement image = imageMap[cell.image];
-      //context.drawImageToRect(image, new Rect(x, y, boxSize, boxSize));
       context.drawImage(image, x, y); // images are resized to the cell size
     }
   }
