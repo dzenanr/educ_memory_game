@@ -1,9 +1,6 @@
 part of educ_memory_game;
 
 class Board {
-
-  // board is drawn every INTERVAL in ms
-  static const int INTERVAL = 1000;
   // color of hidden cells
   static const String HIDDEN_CELL_COLOR_CODE = '#f0f0f0';
 
@@ -26,7 +23,12 @@ class Board {
       imageMap[cell.image] = image;
     }
     query('#canvas').onMouseDown.listen(onMouseDown);
-    new Timer.periodic(const Duration(milliseconds: INTERVAL), (t) => draw());
+    window.animationFrame.then(gameLoop);
+  }
+
+  void gameLoop(num delta) {
+    draw();
+    window.animationFrame.then(gameLoop);
   }
 
   void draw() {
@@ -52,12 +54,11 @@ class Board {
   void _imageBox(Cell cell) {
     var x = cell.column * boxSize;
     var y = cell.row * boxSize;
-    context.beginPath();
-    context.rect(x, y, boxSize, boxSize);
-    // when the screen first appears, the top left cell is black, then it goes away
-    // context.fill();
-    context.stroke();
-    context.closePath();
+    context
+      ..beginPath()
+      ..rect(x, y, boxSize, boxSize)
+      ..stroke()
+      ..closePath();
     if (cell.hidden ) {
       context.fillStyle = HIDDEN_CELL_COLOR_CODE;
       var centerX = cell.column * boxSize + boxSize / 2;
@@ -65,14 +66,6 @@ class Board {
       var radius = 4;
       context.arc(centerX, centerY, radius, 0, 2 * PI, false);
     } else {
-      /*
-      var imagePath = 'images/${cell.image}';
-      ImageElement image = new Element.tag('img');
-      image.src = imagePath;
-      image.onLoad.listen((event) {
-        context.drawImageToRect(image, new Rect(x, y, boxSize, boxSize));
-      });
-      */
       ImageElement image = imageMap[cell.image];
       context.drawImage(image, x, y); // images are resized to the cell size
     }

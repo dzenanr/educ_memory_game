@@ -1,10 +1,6 @@
 part of memory;
 
 class Board {
-
-  // The board is drawn every INTERVAL in ms.
-  static const int INTERVAL = 8;
-
   CanvasElement canvas;
   CanvasRenderingContext2D context;
 
@@ -17,9 +13,12 @@ class Board {
     context = canvas.getContext('2d');
     width = canvas.width;
     height = canvas.height;
+    window.animationFrame.then(gameLoop);
+  }
 
-    // Draw every INTERVAL in ms.
-    new Timer.periodic(const Duration(milliseconds: INTERVAL), (t) => draw());
+  void gameLoop(num delta) {
+    draw();
+    window.animationFrame.then(gameLoop);
   }
 
   void _clear() {
@@ -30,12 +29,13 @@ class Board {
     var gap = height / memory.length;
     var x = cell.row * gap;
     var y = cell.column * gap;
-    context.beginPath();
-    context.fillStyle = colorMap[cell.color];
-    context.rect(x, y, gap, gap);
-    context.fill();
-    context.stroke();
-    context.closePath();
+    context
+      ..beginPath()
+      ..fillStyle = colorMap[cell.color]
+      ..rect(x, y, gap, gap)
+      ..fill()
+      ..stroke()
+      ..closePath();
   }
 
   void _boxes() {

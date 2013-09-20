@@ -1,8 +1,6 @@
 part of educ_memory_game;
 
 class Board {
-  // board is drawn every INTERVAL in ms
-  static const int INTERVAL = 10;
   // color of hidden cells
   static const String HIDDEN_CELL_COLOR_CODE = '#f0f0f0';
 
@@ -17,7 +15,12 @@ class Board {
     size = canvas.width;
     boxSize = size / memory.length;
     query('#canvas').onMouseDown.listen(onMouseDown);
-    new Timer.periodic(const Duration(milliseconds: INTERVAL), (t) => draw());
+    window.animationFrame.then(gameLoop);
+  }
+
+  void gameLoop(num delta) {
+    draw();
+    window.animationFrame.then(gameLoop);
   }
 
   void draw() {
@@ -51,10 +54,11 @@ class Board {
     } else {
       context.fillStyle = colorMap[cell.color];
     }
-    context.rect(x, y, boxSize, boxSize);
-    context.fill();
-    context.stroke();
-    context.closePath();
+    context
+      ..rect(x, y, boxSize, boxSize)
+      ..fill()
+      ..stroke()
+      ..closePath();
   }
 
   void onMouseDown(MouseEvent e) {

@@ -1,10 +1,6 @@
 part of memory;
 
 class Board {
-
-  // The board is drawn every INTERVAL in ms.
-  static const int INTERVAL = 8;
-
   static const String COLOR_CODE = '#f0f0f0';
 
   CanvasElement canvas;
@@ -21,12 +17,14 @@ class Board {
     context = canvas.getContext('2d');
     size = canvas.width;
     boxSize = size / memory.length;
-
     // Canvas event.
     document.query('#canvas').onMouseDown.listen(onMouseDown);
+    window.animationFrame.then(gameLoop);
+  }
 
-    // Draw every INTERVAL in ms.
-    new Timer.periodic(const Duration(milliseconds: INTERVAL), (t) => draw());
+  void gameLoop(num delta) {
+    draw();
+    window.animationFrame.then(gameLoop);
   }
 
   void _clear() {
@@ -42,10 +40,11 @@ class Board {
     } else {
       context.fillStyle = colorMap[cell.color];
     }
-    context.rect(x, y, boxSize, boxSize);
-    context.fill();
-    context.stroke();
-    context.closePath();
+    context
+      ..rect(x, y, boxSize, boxSize)
+      ..fill()
+      ..stroke()
+      ..closePath();
   }
 
   void _boxes() {
