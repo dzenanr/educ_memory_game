@@ -24,18 +24,18 @@ class Cell {
 
 class Cells {
 
-  List<Cell> list;
+  List<Cell> _list;
 
   Cells() {
-    list = new List<Cell>();
+    _list = new List<Cell>();
   }
 
   void add(Cell cell) {
-    list.add(cell);
+    _list.add(cell);
   }
 
-  Iterator get iterator => list.iterator;
+  Iterator get iterator => _list.iterator;
 
-  bool every(bool f(Cell cell)) => list.every(f);
+  bool every(bool f(Cell cell)) => _list.every(f);
 
 }
