@@ -8,6 +8,7 @@ class Board {
   num height;
 
   Board(this.canvas) {
+    assert(canvas != null);
     context = canvas.getContext('2d');
     width = canvas.width;
     height = canvas.height;
