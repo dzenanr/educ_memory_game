@@ -13,8 +13,8 @@ part 'util/random.dart';
 CanvasElement canvas;
 
 void main() {
-  canvas = query('#canvas');
-  ButtonElement play = query('#play');
+  canvas = querySelector('#canvas');
+  ButtonElement play = querySelector('#play');
   play.onClick.listen(playAgain);
   new Board(canvas, new Memory(4));
 }

@@ -4,15 +4,15 @@ import 'dart:html';
 num rotatePos = 0;
 
 void main() {
-  query("#text").text = "Click me!";
+  querySelector("#text").text = "Click me!";
 
-  query("#text").onClick.listen(rotateText);
+  querySelector("#text").onClick.listen(rotateText);
 }
 
 void rotateText(Event event) {
   rotatePos += 360;
 
-  var textElement = query("#text");
+  var textElement = querySelector("#text");
 
   textElement.style.transition = "1s";
   textElement.style.transform = "rotate(${rotatePos}deg)";

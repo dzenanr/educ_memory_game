@@ -22,7 +22,7 @@ class Board {
       image.src = 'images/${cell.image}';
       imageMap[cell.image] = image;
     }
-    query('#canvas').onMouseDown.listen(onMouseDown);
+    querySelector('#canvas').onMouseDown.listen(onMouseDown);
     window.animationFrame.then(gameLoop);
   }
 
@@ -79,10 +79,10 @@ class Board {
     if (cell.twin == lastCellClicked) {
       lastCellClicked.hidden = false;
       // play sound when found the same 2 images:
-      AudioElement thip = query('#thip');
+      AudioElement thip = querySelector('#thip');
       thip.play();
       if (memory.recalled) { // game over
-        AudioElement fireballs = query('#fireballs');
+        AudioElement fireballs = querySelector('#fireballs');
         fireballs.play();
         new Timer(const Duration(milliseconds: 5000), () => memory.hide());
       }

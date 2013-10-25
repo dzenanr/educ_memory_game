@@ -11,8 +11,8 @@ part 'util/images.dart';
 part 'util/random.dart';
 
 void main() {
-  CanvasElement canvas = query('#canvas');
-  ButtonElement play = query('#play');
+  CanvasElement canvas = querySelector('#canvas');
+  ButtonElement play = querySelector('#play');
   play.onClick.listen((Event e) {
     window.location.reload();
   });
