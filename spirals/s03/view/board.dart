@@ -48,5 +48,4 @@ class Board {
     _clear();
     _boxes();
   }
-
 }

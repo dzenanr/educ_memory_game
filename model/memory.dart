@@ -1,7 +1,6 @@
 part of educ_memory_game;
 
 class Memory {
-
   int length;
   bool _recalled = false;
 
@@ -74,7 +73,6 @@ class Memory {
     }
     _recalled = false;
   }
-
 }
 
 

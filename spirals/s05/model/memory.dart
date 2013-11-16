@@ -1,7 +1,6 @@
 part of memory;
 
 class Memory {
-
   int length;
   bool _recalled = false;
 
@@ -74,7 +73,6 @@ class Memory {
     for (final cell in cells) cell.hidden = true;
     _recalled = false;
   }
-
 }
 
 

@@ -1,18 +1,14 @@
 part of memory;
 
 class Cell {
-
   int row, column;
   String color;
-
   Memory memory;
 
   Cell(this.memory, this.row, this.column);
-
 }
 
 class Cells {
-
   List _list;
 
   Cells() {
@@ -24,5 +20,4 @@ class Cells {
   }
 
   Iterator get iterator => _list.iterator;
-
 }

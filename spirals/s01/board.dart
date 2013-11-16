@@ -8,7 +8,6 @@ class Board {
   num height;
 
   Board(this.canvas) {
-    assert(canvas != null);
     context = canvas.getContext('2d');
     width = canvas.width;
     height = canvas.height;
@@ -31,10 +30,9 @@ class Board {
     */
     context..rect(0, 0, width, height)..stroke();
   }
-
+  
   void draw() {
     clear();
     border();
   }
-
 }

@@ -1,7 +1,6 @@
 part of memory;
 
 class Memory {
-
   int length;
 
   Cells cells;
@@ -17,7 +16,6 @@ class Memory {
       }
     }
   }
-
 }
 
 

@@ -62,5 +62,4 @@ class Board {
     cell.hidden = false;
     cell.twin.hidden = false;
   }
-
 }

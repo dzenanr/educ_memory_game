@@ -91,5 +91,4 @@ class Board {
     }
     lastCellClicked = cell;
   }
-
 }

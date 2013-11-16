@@ -1,7 +1,6 @@
 part of memory;
 
 class Memory {
-
   int length;
   bool recalled = false;
 
@@ -60,7 +59,6 @@ class Memory {
     usedColors.add(color);
     return color;
   }
-
 }
 
 

@@ -1,7 +1,6 @@
 part of memory;
 
 class Cell {
-
   int row, column;
   Cell twin;
   String color;
@@ -19,11 +18,9 @@ class Cell {
   }
 
   bool get shown => !hidden;
-
 }
 
 class Cells {
-
   List _list;
 
   Cells() {
@@ -37,5 +34,4 @@ class Cells {
   Iterator get iterator => _list.iterator;
   
   bool every(Function f) => _list.every(f);
-
 }

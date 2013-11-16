@@ -1,7 +1,6 @@
 part of educ_memory_game;
 
 class Cell {
-
   int row, column;
   Cell twin;
   String image;
@@ -19,11 +18,9 @@ class Cell {
   }
 
   bool get shown => !hidden;
-
 }
 
 class Cells {
-
   List<Cell> _list;
 
   Cells() {
@@ -37,5 +34,4 @@ class Cells {
   Iterator get iterator => _list.iterator;
 
   bool every(bool f(Cell cell)) => _list.every(f);
-
 }

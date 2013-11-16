@@ -55,5 +55,4 @@ class Board {
     _border();
     _lines();
   }
-
 }

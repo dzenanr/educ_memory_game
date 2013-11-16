@@ -1,7 +1,6 @@
 part of educ_memory_game;
 
 class Cell {
-
   int row, column;
   Cell twin;
   String color;
@@ -22,7 +21,6 @@ class Cell {
 }
 
 class Cells {
-
   List<Cell> _list;
 
   Cells() {

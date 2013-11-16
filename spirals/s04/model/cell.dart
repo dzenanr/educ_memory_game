@@ -1,7 +1,6 @@
 part of memory;
 
 class Cell {
-
   int row, column;
   Cell twin;
   String color;
@@ -17,11 +16,9 @@ class Cell {
     }
     return false;
   }
-
 }
 
 class Cells {
-
   List _list;
 
   Cells() {
@@ -33,5 +30,4 @@ class Cells {
   }
 
   Iterator get iterator => _list.iterator;
-
 }
