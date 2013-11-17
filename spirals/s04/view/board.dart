@@ -15,7 +15,7 @@ class Board {
     context = canvas.getContext('2d');
     size = canvas.width;
     boxSize = size / memory.length;
-    document.querySelector('#canvas').onMouseDown.listen(onMouseDown);
+    querySelector('#canvas').onMouseDown.listen(onMouseDown);
     window.animationFrame.then(gameLoop);
   }
 
