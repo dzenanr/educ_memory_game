@@ -2,7 +2,7 @@ part of educ_memory_game;
 
 class Board {
   // color of hidden cells
-  static const String HIDDEN_CELL_COLOR_CODE = '#f0f0f0';
+  static const String hiddenCellColorCode = '#f0f0f0';
 
   CanvasElement canvas;
   CanvasRenderingContext2D context;
@@ -60,7 +60,7 @@ class Board {
       ..stroke()
       ..closePath();
     if (cell.hidden ) {
-      context.fillStyle = HIDDEN_CELL_COLOR_CODE;
+      context.fillStyle = hiddenCellColorCode;
       var centerX = cell.column * boxSize + boxSize / 2;
       var centerY = cell.row * boxSize + boxSize / 2;
       var radius = 4;
