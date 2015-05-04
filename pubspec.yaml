@@ -1,7 +1,7 @@
 name: educ_memory_game
 author: Dzenan Ridjanovic <dzenanr@gmail.com>
 homepage: http://ondart.me/
-version: 0.1.0
+version: 0.1.1
 description: >
   Learning spirals for a simple memory game
 dependencies:

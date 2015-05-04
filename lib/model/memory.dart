@@ -37,6 +37,7 @@ class Memory {
         return cell;
       }
     }
+    return null;
   }
 
   Cell _getFreeRandomCell() {
